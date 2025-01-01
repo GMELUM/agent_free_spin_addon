@@ -1,0 +1,62 @@
+.Modal {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  flex-direction: column;
+  z-index: 24;
+  background-color: rgb(0 0 0 / 20%);
+}
+
+.Modal__inner {
+  display: flex;
+  flex: 1 1;
+  flex-direction: column-reverse;
+  flex-wrap: nowrap;
+}
+
+.Modal__container {
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+}
+
+.Modal--to-up {
+  background-color: rgb(0 0 0 / 5%);
+}
+
+.Modal--to-down {
+  background-color: rgb(0 0 0 / 0%);
+}
+
+.Modal--to-up .Modal__container {
+  -webkit-animation: _modalUp .4s forwards;
+  animation: _modalUp .4s forwards;
+}
+
+.Modal--to-down .Modal__container {
+  -webkit-animation: _modalDown .4s forwards;
+  animation: _modalDown .4s forwards;
+}
+
+@keyframes _modalUp {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes _modalDown {
+  0% {
+    transform: translateY(0%);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}

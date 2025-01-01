@@ -1,0 +1,161 @@
+.View {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.View__back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.View__active {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.View__safe .View__active>.Panel>.Panel__before,
+.View__safe .View__back>.Panel>.Panel__before {
+  width: 100%;
+  height: 0px;
+  padding-top: var(--safe-area-inset-top);
+}
+
+.View__safe .View__active>.Panel>.Panel__after,
+.View__safe .View__back>.Panel>.Panel__after {
+  width: 100%;
+  height: 0px;
+  padding-bottom: var(--safe-area-inset-bottom);
+}
+
+.View__down .View__back {
+  z-index: 2;
+  -webkit-animation: _backAnimation .6s forwards;
+  animation: _backAnimation .6s forwards;
+}
+
+.View__next .View__active {
+  z-index: 2;
+  -webkit-animation: _nextAnimation .6s forwards;
+  animation: _nextAnimation .6s forwards;
+}
+
+.View__down .View__active::before {
+  -webkit-animation: _downShadow .6s forwards;
+  animation: __downShadow .6s forwards;
+}
+
+.View__down .View__active {
+  -webkit-animation: _fromLeft .6s forwards;
+  animation: _fromLeft .6s forwards;
+}
+
+.View__next .View__back::before {
+  -webkit-animation: _upShadow .6s forwards;
+  animation: _upShadow .6s forwards;
+}
+
+.View__next .View__back {
+  -webkit-animation: _toLeft .6s forwards;
+  animation: _toLeft .6s forwards;
+}
+
+.View__visible .View__active {
+  transform: translateX(0%);
+}
+
+.View__background {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+@-webkit-keyframes _nextAnimation {
+  from {
+    transform: translateY(100%)
+  }
+
+  to {
+    transform: translateY(0%)
+  }
+}
+
+@keyframes _nextAnimation {
+  from {
+    transform: translateY(100%)
+  }
+
+  to {
+    transform: translateY(0%)
+  }
+}
+
+@-webkit-keyframes _backAnimation {
+  from {
+    transform: translateY(0%)
+  }
+
+  to {
+    transform: translateY(100%)
+  }
+}
+
+@keyframes _backAnimation {
+  from {
+    transform: translateY(0%)
+  }
+
+  to {
+    transform: translateY(100%)
+  }
+}
+
+@-webkit-keyframes _toLeft {
+  from {
+    transform: translateY(0%)
+  }
+
+  to {
+    transform: translateY(-100%)
+  }
+}
+
+@keyframes _toLeft {
+  from {
+    transform: translateY(0%)
+  }
+
+  to {
+    transform: translateY(-100%)
+  }
+}
+
+@-webkit-keyframes _fromLeft {
+  from {
+    transform: translateY(-100%)
+  }
+
+  to {
+    transform: translateY(0%)
+  }
+}
+
+@keyframes _fromLeft {
+  from {
+    transform: translateY(-100%)
+  }
+
+  to {
+    transform: translateY(0%)
+  }
+}

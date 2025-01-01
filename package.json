@@ -1,0 +1,31 @@
+{
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "start": "vite --config ./config/vite.dev.config.ts",
+    "build": "vite build --config ./config/vite.build.config.ts",
+    "deploy": "git subtree push --prefix builds https://github.com/elum-static/new_year gh-pages"
+  },
+  "dependencies": {
+    "elum-router": "0.0.17",
+    "elum-state": "0.7.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-three-fiber": "6.0.13",
+    "rollup-plugin-copy": "3.5.0",
+    "vite-plugin-fast-react-svg": "0.4.0",
+    "vite-plugin-singlefile": "0.13.5"
+  },
+  "devDependencies": {
+    "@andylacko/vite-svg-react-loader": "3.0.16",
+    "@types/node": "20.8.0",
+    "@types/react": "18.2.23",
+    "@types/react-dom": "18.2.8",
+    "@vitejs/plugin-react": "4.1.0",
+    "svgson": "5.3.1",
+    "terser": "5.20.0",
+    "vite": "3",
+    "vite-plugin-react-svg": "0.2.0",
+    "vite-tsconfig-paths": "4.2.1"
+  }
+}

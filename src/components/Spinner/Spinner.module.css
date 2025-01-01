@@ -1,0 +1,65 @@
+.Spinner {
+  display: flex;
+  transition: .4s;
+  justify-content: center;
+  align-items: center;
+}
+
+.Spinner svg {
+  animation: _rotate 2s linear infinite;
+  z-index: 2;
+}
+
+.Spinner--auto svg {
+  width: 100%;
+  height: 100%;
+}
+
+.Spinner--small svg {
+  width: 24px;
+  height: 24px;
+}
+
+.Spinner--regular svg {
+  width: 32px;
+  height: 32px;
+}
+
+.Spinner--medium svg {
+  width: 44px;
+  height: 44px;
+}
+
+.Spinner--large svg {
+  width: 56px;
+  height: 56px;
+}
+
+.Spinner circle {
+  stroke: currentColor;
+  stroke-linecap: round;
+  animation: _dash 2s ease-in-out infinite;
+}
+
+@keyframes _rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes _dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
