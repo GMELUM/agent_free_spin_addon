@@ -13,3 +13,4 @@ export { default as ModalPanel } from './ModalPanel/ModalPanel';
 export { default as ModalBlock } from './ModalBlock/ModalBlock';
 
 export { default as Touch, type GestureEvent } from "./Touch/Touch";
+export { default as Text } from './Text/Text';

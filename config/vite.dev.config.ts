@@ -7,8 +7,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 export default defineConfig({
 	server: {
 		port: 18300,
-		host: '0.0.0.0',
-		hmr: false,
+		host: '0.0.0.0'
 	},
 	build: {
 		target: 'es2015',

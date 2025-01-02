@@ -1,5 +1,8 @@
 import { createRoot } from 'react-dom/client'
+import { Router } from 'elum-router/react';
 import Layout from 'layout'
+
+import "./styles.css";
 
 document.addEventListener('contextmenu', e => e.preventDefault())
 
@@ -8,6 +11,8 @@ if (!app) {
 	throw new Error('Root element not found')
 }
 
-const root = createRoot(app)
-
-root.render(<Layout />)
+createRoot(app).render(
+	<Router branch="startup">
+		<Layout />
+	</Router>
+)

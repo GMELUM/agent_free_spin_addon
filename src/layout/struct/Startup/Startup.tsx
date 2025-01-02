@@ -14,12 +14,10 @@ const Startup: FC<Startup> = ({
 
   const activePanel = useRouter("panel");
 
-  const preload = async () => {
-
+  const preload = () => {
     setTimeout(() => {
-      nextPage({ view: "game", stay: "game", freeze: true })
+      nextPage({ view: "spin", stay: "spin", freeze: true })
     }, 1000)
-
   }
 
   useEffect(() => { preload() }, []);

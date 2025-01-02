@@ -1,4 +1,4 @@
-import { classes } from 'engine';
+import { classes } from "utils";
 import { FC, HTMLAttributes, ReactNode } from 'react';
 
 import style from "./PanelHeader.module.css";
