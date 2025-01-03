@@ -29,6 +29,8 @@
   line-height: 135%;
   color      : #808080;
 
+  margin-top: 2px;
+
   display        : flex;
   justify-content: center;
   align-items    : center;
