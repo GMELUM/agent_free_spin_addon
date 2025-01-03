@@ -3,6 +3,7 @@ import { useRouter } from "elum-router/react";
 
 import { Panel, View } from "components";
 import FreeSpin from "FreeSpin";
+import FreeSpinShop from "FreeSpinShop";
 
 interface Spin extends HTMLAttributes<HTMLDivElement> {
   nav: string;
@@ -14,7 +15,8 @@ const Spin: FC<Spin> = ({ nav }) => {
   return (
     <View nav={nav} activePanel={activePanel}>
       <Panel nav={"default"} safeTop={false} safeBottom={false} fixed>
-        <FreeSpin />
+        {/* <FreeSpin /> */}
+        <FreeSpinShop />
       </Panel>
     </View>
   );
