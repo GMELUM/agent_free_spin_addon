@@ -19,7 +19,7 @@ const Slot: React.FC<SlotProps> = ({
     useEffect(() => {
         const interval = setInterval(() => {
             setPosition((p) => [p[4], p[0], p[1], p[2], p[3]]);
-        }, 500);
+        }, 100);
 
         return () => {
             clearInterval(interval);
@@ -34,22 +34,22 @@ const Slot: React.FC<SlotProps> = ({
         },
         {
             transform: `translateY(0%)`,
-            transition: ".5s linear",
+            transition: ".1s linear",
             zIndex: 1
         },
         {
             transform: `translateY(100%)`,
-            transition: ".5s linear",
+            transition: ".1s linear",
             zIndex: 1
         },
         {
             transform: `translateY(200%)`,
-            transition: ".5s linear",
+            transition: ".1s linear",
             zIndex: 1
         },
         {
             transform: `translateY(300%)`,
-            transition: ".5s linear",
+            transition: ".1s linear",
             zIndex: 0
         }
     ][position.indexOf(index)];
