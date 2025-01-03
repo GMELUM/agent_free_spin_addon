@@ -1,0 +1,58 @@
+.Button {
+  flex-direction : column;
+  display        : flex;
+  justify-content: center;
+  align-items    : flex-start;
+  position       : relative;
+  font-weight    : 600;
+  overflow       : hidden;
+
+  cursor: pointer;
+
+  border-radius: 24px;
+
+  width  : 100%;
+  padding: 16px;
+}
+
+.Button__in {
+  white-space  : nowrap;
+  text-overflow: ellipsis;
+  overflow     : hidden;
+  font-weight  : 600;
+  font-size    : 24px;
+}
+
+.Button__description {
+  font-weight: 500;
+  font-size  : 16px;
+  line-height: 135%;
+  color      : #808080;
+
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  gap            : 8px;
+}
+
+/* Appearance */
+.Button__appearance--secondary {
+  color           : white;
+  background-color: rgba(34, 32, 34, 0.75);
+}
+
+.Button__appearance--gold {
+  color: white;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    linear-gradient(90deg, #C7982E 0%, #C7982E 100%);
+}
+
+.Button__appearance--gold .Button__description {
+  color: #F5D8B2;
+}
+
+@media (hover: hover) {
+  .Button__appearance--white:hover {
+    background-color: rgb(229, 231, 235);
+  }
+}
