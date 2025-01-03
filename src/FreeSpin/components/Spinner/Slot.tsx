@@ -4,65 +4,59 @@ import styles from "./slot.module.css";
 type Symbols = Array<{
     symbol: string;
     element: ReactElement;
-}>
+}>;
 
 interface SlotProps {
     symbols: Symbols;
 }
 
-const Slot: React.FC<SlotProps> = ({
-    symbols
-}) => {
-
-    const [position, setPosition] = useState([0, 1, 2, 3, 4]);
+const Slot: React.FC<SlotProps> = ({ symbols }) => {
+    const [index, setIndex] = useState(0);
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setPosition((p) => [p[4], p[0], p[1], p[2], p[3]]);
-        }, 100);
+            next();
+        }, 500);
 
-        return () => {
-            clearInterval(interval);
-        };
+        return () => clearInterval(interval);
     }, []);
 
-    const createPosition = (index: number): CSSProperties => [
+    const next = () => {
+        setIndex((prevIndex) => prevIndex + 1);
+    };
+
+    const createPosition = (cellIndex: number): CSSProperties => [
         {
             transform: `translateY(-100%)`,
             transition: "none",
-            zIndex: 0
         },
         {
             transform: `translateY(0%)`,
-            transition: ".1s linear",
-            zIndex: 1
+            transition: ".5s linear",
         },
         {
             transform: `translateY(100%)`,
-            transition: ".1s linear",
-            zIndex: 1
+            transition: ".5s linear",
         },
         {
             transform: `translateY(200%)`,
-            transition: ".1s linear",
-            zIndex: 1
+            transition: ".5s linear",
         },
         {
             transform: `translateY(300%)`,
-            transition: ".1s linear",
-            zIndex: 0
-        }
-    ][position.indexOf(index)];
+            transition: ".5s linear",
+        },
+    ][(index + cellIndex) % 5];
 
-    const createItem = (index: number): ReactElement => {
-        return symbols[index].element
-    };
+    const createItem = (cellIndex: number) => {
+        return symbols[cellIndex].element
+    }
 
-    const item0 = useMemo(() => createItem(0), [position]);
-    const item1 = useMemo(() => createItem(1), [position]);
-    const item2 = useMemo(() => createItem(2), [position]);
-    const item3 = useMemo(() => createItem(3), [position]);
-    const item4 = useMemo(() => createItem(4), [position]);
+    const item0 = useMemo(() => createItem(0), [index, symbols]);
+    const item1 = useMemo(() => createItem(1), [index, symbols]);
+    const item2 = useMemo(() => createItem(2), [index, symbols]);
+    const item3 = useMemo(() => createItem(3), [index, symbols]);
+    const item4 = useMemo(() => createItem(4), [index, symbols]);
 
     return (
         <div className={styles.Slot}>
