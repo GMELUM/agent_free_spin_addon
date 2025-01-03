@@ -136,3 +136,9 @@
     color: white;
     font-weight: 600;
 }
+
+.Spinner_cell span {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-color: black;
+}
