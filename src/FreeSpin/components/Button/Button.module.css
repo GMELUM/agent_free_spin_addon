@@ -1,0 +1,64 @@
+.Button {
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  position       : relative;
+  font-weight    : 600;
+  overflow       : hidden;
+
+  cursor: pointer;
+
+  border-radius: 18px;
+}
+
+.Button__in {
+  white-space  : nowrap;
+  text-overflow: ellipsis;
+  overflow     : hidden;
+}
+
+.Button--stretched {
+  width: 100%;
+}
+
+/* Size */
+.Button__size--small {
+  padding: 8px 28px;
+}
+
+.Button__size--medium {
+  padding: 5px;
+}
+
+/* TextSize */
+.Button__textSize--medium {
+  font-size  : 16px;
+  line-height: 20px;
+
+  gap: 5px;
+}
+
+.Button__textSize--large {
+  font-size     : 20px;
+  line-height   : 20px;
+  letter-spacing: -0.3px;
+
+  gap: 10px;
+}
+
+/* Appearance */
+.Button__appearance--secondary {
+  color           : white;
+  background-color: rgba(34, 32, 34, 0.75);
+}
+
+.Button__appearance--white {
+  color           : rgb(0, 0, 0);
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+@media (hover: hover) {
+  .Button__appearance--white:hover {
+    background-color: rgb(229, 231, 235);
+  }
+}

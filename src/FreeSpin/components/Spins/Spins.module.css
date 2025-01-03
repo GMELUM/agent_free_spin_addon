@@ -1,0 +1,30 @@
+.Spins {
+  display        : flex;
+  justify-content: space-between;
+  align-items    : center;
+  padding        : 15px 30px;
+}
+
+.Spins__before {
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+
+  font-size     : 16px;
+  line-height   : 16px;
+  letter-spacing: -0.3px;
+  font-weight   : 600;
+
+}
+
+.Spins__before--secondary {
+  color: #868686;
+}
+
+.Spins__before--accent {
+  color: #FFFFFF;
+}
+
+.Spins__before_icon {
+  padding-left: 6px;
+}

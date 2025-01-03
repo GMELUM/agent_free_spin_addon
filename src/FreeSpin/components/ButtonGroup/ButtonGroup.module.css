@@ -1,0 +1,18 @@
+.ButtonGroup {
+  display       : flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  position  : relative;
+  width     : 100%;
+  padding   : 20px;
+  gap       : 8px;
+}
+
+.ButtonGroup_Container {
+  width          : 100%;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  gap            : 8px;
+}

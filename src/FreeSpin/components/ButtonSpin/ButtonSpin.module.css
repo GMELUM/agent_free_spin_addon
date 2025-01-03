@@ -1,0 +1,190 @@
+.ButtonSpin {
+  position: relative;
+  width   : 100%;
+  height  : 112px;
+}
+
+
+.ButtonSpin__in {
+  perspective    : 300px;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  cursor         : pointer;
+}
+
+
+.ButtonSpin__text {
+  width      : 100%;
+  white-space: nowrap;
+  opacity    : 0;
+
+  font-weight: 600;
+  font-size  : 14px;
+  padding    : 0px 6px;
+
+}
+
+.ButtonSpin__one {
+  position       : relative;
+  width          : auto;
+  height         : 80px;
+  transform-style: preserve-3d;
+
+}
+
+.ButtonSpin__one_spin {
+
+  position   : relative;
+  display    : block;
+  width      : calc(91%);
+  margin-left: 4.5%;
+  box-sizing : border-box;
+  height     : 100%;
+
+
+
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+
+  font-weight: 600;
+  font-size  : 24px;
+  line-height: 24px;
+
+  color: #FFFFFF;
+
+  text-shadow    : 0px 3px 0px rgba(0, 0, 0, 0.46);
+  transform-style: preserve-3d;
+
+}
+
+.ButtonSpin__one_spin::after {
+  position: absolute;
+  left    : 0;
+  right   : 0;
+  top     : 0;
+  bottom  : 0;
+  content : " ";
+
+  border-radius: 8px;
+
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    #F4AE16;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  transform: rotateX(50deg) rotateY(360deg);
+}
+
+
+.ButtonSpin__one_block {
+  position: absolute;
+  bottom  : -12px;
+  left    : 0px;
+  right   : 0px;
+  height  : 26px;
+
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    #8B630E;
+  box-shadow   : inset 0px -9px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 0px 4px 4px;
+  white-space  : nowrap;
+
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+
+  font-weight: 600;
+  font-size  : 14px;
+
+}
+
+
+
+
+.ButtonSpin__two {
+  position       : relative;
+  width          : 100%;
+  margin         : 30px;
+  box-sizing     : border-box;
+  height         : 56px;
+  transform-style: preserve-3d;
+
+  transform : translateY(-26px) translateZ(20px);
+  transition: all 0.2s;
+
+}
+
+.ButtonSpin__two_spin {
+  backface-visibility: hidden;
+  background         : linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    #C91121;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  display      : block;
+  width        : 100%;
+  height       : 100%;
+  border-radius: 8px;
+
+  transform: rotateX(50deg) rotateY(360deg) translateY(14px);
+
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+
+  font-weight: 600;
+  font-size  : 24px;
+  line-height: 24px;
+
+  color: #FFFFFF;
+
+  border     : 1px solid #960F1A;
+  text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.46);
+
+}
+
+.ButtonSpin__two_block {
+  position: absolute;
+  bottom  : -14px;
+  left    : -5%;
+  right   : -8.2%;
+  height  : 18px;
+
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    linear-gradient(90deg, #680A12 0%, #960F1B 50%, #680A12 100%);
+  box-shadow   : inset 0px -8px 5.6px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 0px 5px 5px;
+  transition   : all 0.2s;
+}
+
+
+.ButtonSpin__in--active .ButtonSpin__two {
+  transform: translateY(-11px) translateZ(20px);
+}
+
+.ButtonSpin__in--active .ButtonSpin__two_block {
+  bottom: 0px;
+  left  : -2px;
+  right : -4px;
+}
+
+
+.ButtonSpin__light {
+  z-index: -1;
+
+  position: absolute;
+  left    : 0;
+  right   : 0;
+  bottom  : 0;
+  height  : 200px;
+
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+}
+
+.ButtonSpin__light svg {
+  width    : 200%;
+  min-width: 200%;
+  height   : auto;
+}
