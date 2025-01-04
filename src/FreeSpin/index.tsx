@@ -1,19 +1,53 @@
-import { FC, HTMLAttributes } from "react";
+import { FC, HTMLAttributes, useMemo } from "react";
 import { Spinner, Balances, Spins, ButtonSpin } from "./components";
+import { Symbols } from "./components/Spinner/Slot";
 
 import "./index.css";
 
-interface FreeSpin extends HTMLAttributes<HTMLDivElement> {}
+interface FreeSpin extends HTMLAttributes<HTMLDivElement> {
+  ap?: number;
+  not?: number;
+  ton?: number;
 
-const FreeSpin: FC<FreeSpin> = ({}) => {
+  symbols: Symbols;
+  combination: [string, string, string];
+
+  onSpin: () => void
+  onShop: () => void
+
+}
+
+const FreeSpin: FC<FreeSpin> = ({
+  ap = 0,
+  not = 0,
+  ton = 0,
+  symbols,
+  combination,
+  onSpin,
+  onShop
+}) => {
+
+  const balance = useMemo(() => (
+    <Balances
+      ap={ap}
+      not={not}
+      ton={ton}
+    />
+  ), [ap, not, ton])
+
   return (
     <>
-      <Balances ap={112000} not={8400000000} ton={245000000000} />
 
-      <Spinner></Spinner>
+      {balance}
 
-      <Spins count={15} onClick={() => {}} />
-      <ButtonSpin />
+      <Spinner
+        symbols={symbols}
+        combination={combination}
+      />
+
+      <Spins count={15} onClick={() => onShop && onShop()} />
+      <ButtonSpin onClick={() => onSpin && onSpin()} />
+
     </>
   );
 };

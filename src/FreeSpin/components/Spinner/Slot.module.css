@@ -11,6 +11,7 @@
   position: relative;
   overflow: hidden;
   pointer-events: none;
+  transition: .2s;
 }
 
 .Slot_position {
@@ -20,4 +21,27 @@
   aspect-ratio: 1 / 1;
   justify-content: center;
   align-items: center;
+}
+
+.Slot_inner_blur {
+  transition: .2s;
+  filter: blur(1rem);
+}
+
+.Slot_inner_end {
+  animation: _bounce_animation .5s ease-in-out;
+}
+
+@keyframes _bounce_animation {
+  from {
+    transform: translateY(-5%);
+  }
+
+  50% {
+    transform: translateY(5%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
 }
