@@ -8,6 +8,7 @@ export type Symbols = Array<{
 }>;
 
 interface SlotProps {
+    hash: number;
     symbols: Symbols;
     change: string;
     onChange: (key: string) => void;
@@ -15,15 +16,23 @@ interface SlotProps {
 }
 
 const Slot: React.FC<SlotProps> = ({
+    hash,
     symbols,
     change,
     onChange,
     canStop = true,
 }) => {
 
+    const initialIndex = useMemo(() => {
+        const index = symbols.findIndex((symbol) => symbol.key === change);
+        return index !== -1 ? index : 0;
+    }, [symbols, change]);
+
     const [state, setState] = useState({
+        hash: 0,
         index: 0,
-        active: true,
+        position: symbols.map((_, i) => (i + initialIndex) % symbols.length),
+        active: false,
         end: false,
         changedKey: null as string | null,
     });
@@ -33,37 +42,45 @@ const Slot: React.FC<SlotProps> = ({
             setState((prevState) => {
                 if (!state.active) return prevState;
 
-                const nextIndex = (prevState.index + 1) % symbols.length;
-                const currentIndex = (prevState.index) % symbols.length;
+                const lastElement = prevState.position.pop();
+                if (lastElement !== undefined) {
+                    prevState.position.unshift(lastElement);
+                }
 
-                if (symbols[nextIndex].key === change && canStop) {
+                const currentItem = prevState.position[3];
+                const nextIndex = prevState.index++;
+
+                if (symbols[currentItem].key == change && canStop) {
                     return {
                         ...prevState,
                         index: nextIndex,
                         active: false,
-                        changedKey: symbols[nextIndex].key,
+                        changedKey: symbols[currentItem].key,
                     };
-                } else if (symbols[currentIndex].key === change && canStop) {
-
                 }
 
-                return { ...prevState, index: nextIndex, end: false };
+                return {
+                    ...prevState,
+                    index: prevState.index++,
+                    end: false
+                };
+
             });
         }, 69);
 
         return () => clearInterval(interval);
-    }, [state.active, canStop, change, symbols]);
+    }, [state, change]);
 
     useEffect(() => {
         if (state.changedKey) {
             onChange(state.changedKey);
             setState((prevState) => ({ ...prevState, changedKey: null, end: true }));
         }
-    }, [state.changedKey, onChange]);
+    }, [state.changedKey]);
 
     useEffect(() => {
         setState((prevState) => ({ ...prevState, active: true, changedKey: null }));
-    }, [change]);
+    }, [change, hash]);
 
     const createPosition = (cellIndex: number): CSSProperties => [
         {
@@ -86,7 +103,10 @@ const Slot: React.FC<SlotProps> = ({
             transform: `translateY(300%)`,
             transition: ".07s linear",
         },
-    ][(state.index + cellIndex) % symbols.length];
+    ][state.position.indexOf(cellIndex)] || {
+        transform: `translateY(-100%)`,
+        transition: "none",
+    };
 
     const renderedItems = useMemo(
         () =>

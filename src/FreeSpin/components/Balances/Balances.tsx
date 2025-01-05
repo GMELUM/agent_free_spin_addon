@@ -7,12 +7,17 @@ import formatCrypto from "FreeSpin/utils/formatCrypto";
 import formatNumberWithCommas from "FreeSpin/utils/formatNumberWithCommas";
 
 interface Balances extends HTMLAttributes<HTMLDivElement> {
-  ap: number | false;
-  ton: number | false;
-  not: number | false;
+  ap?: number | false;
+  ton?: number | false;
+  not?: number | false;
 }
 
-const Balances: FC<Balances> = ({ ap, ton, not, ...prevProps }) => (
+const Balances: FC<Balances> = ({ 
+  ap = false, 
+  ton = false, 
+  not = false, 
+  ...prevProps 
+}) => (
   <ButtonGroup {...prevProps}>
     {ap !== false && (
       <ButtonGroup.Container>

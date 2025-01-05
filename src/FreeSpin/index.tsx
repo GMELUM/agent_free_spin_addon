@@ -11,6 +11,7 @@ interface FreeSpin extends HTMLAttributes<HTMLDivElement> {
 
   symbols: Symbols;
   combination: [string, string, string];
+  prize?: string;
 
   onSpin: () => void
   onShop: () => void
@@ -18,11 +19,12 @@ interface FreeSpin extends HTMLAttributes<HTMLDivElement> {
 }
 
 const FreeSpin: FC<FreeSpin> = ({
-  ap = 0,
-  not = 0,
-  ton = 0,
+  ap,
+  not,
+  ton,
   symbols,
   combination,
+  prize,
   onSpin,
   onShop
 }) => {
@@ -43,6 +45,7 @@ const FreeSpin: FC<FreeSpin> = ({
       <Spinner
         symbols={symbols}
         combination={combination}
+        prize={prize}
       />
 
       <Spins count={15} onClick={() => onShop && onShop()} />

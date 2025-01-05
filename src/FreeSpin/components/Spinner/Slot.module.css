@@ -23,6 +23,11 @@
   align-items: center;
 }
 
+.Slot_position>* {
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+
 .Slot_inner_blur {
   transition: .2s;
   filter: blur(1rem);

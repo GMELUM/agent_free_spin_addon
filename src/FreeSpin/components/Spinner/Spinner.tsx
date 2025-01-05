@@ -4,25 +4,31 @@ import { classes } from "utils";
 import style from "./Spinner.module.css";
 import AspectRation from "../AspectRation/AspectRation";
 import Slot, { Symbols } from "./Slot";
+import Button from "../Button/Button";
 
 interface SpinnerProps extends HTMLAttributes<HTMLDivElement> {
     symbols: Symbols;
     combination: [string, string, string];
+    prize?: string
 }
 
 const Spinner: FC<SpinnerProps> = ({
     symbols,
     combination,
+    prize,
     ...prevProps
 }) => {
     const [canStopArray, setCanStopArray] = useState<boolean[]>([false, false, false]);
     const [finishedSlots, setFinishedSlots] = useState<number[]>([]);
+    const [hash, setHash] = useState(Math.floor(Math.random() * 1e5));
 
     useEffect(() => {
         setCanStopArray([false, false, false]);
         setFinishedSlots([]);
+        setHash(Math.floor(Math.random() * 1e5))
         const timer = setTimeout(() => {
             setCanStopArray((prev) => prev.map((_, idx) => (idx === 0 ? true : false)));
+
         }, 1000);
 
         return () => clearTimeout(timer);
@@ -52,7 +58,14 @@ const Spinner: FC<SpinnerProps> = ({
                 <AspectRation width={10} height={11}>
                     <div className={style.Spinner_prize}>
                         <div className={style.Spinner_prize_container}>
-                            <div className={style.Spinner_prize_cell}></div>
+                            <div className={style.Spinner_prize_cell}>
+                                <Button
+                                    stretched
+                                    textSize={"medium"}
+                                >
+                                    {prize}
+                                </Button>
+                            </div>
                         </div>
                     </div>
                     <div className={style.Spinner_inner}>
@@ -60,6 +73,7 @@ const Spinner: FC<SpinnerProps> = ({
                         {combination.map((item, index) => (
                             <div key={index} className={style.Spinner_cell}>
                                 <Slot
+                                    hash={hash}
                                     symbols={symbols}
                                     change={item}
                                     canStop={canStopArray[index]}
@@ -72,7 +86,13 @@ const Spinner: FC<SpinnerProps> = ({
 
                         <div className={style.Spinner_rate}>
                             <div className={style.Spinner_rate_outer}>
-                                <div className={style.Spinner_rate_inner}>SPIN X1000</div>
+                                <Button
+                                    stretched
+                                    textSize={"medium"}
+                                >
+                                    SPIN X{1000}
+                                </Button>
+                                {/* <div className={style.Spinner_rate_inner}>SPIN X1000</div> */}
                             </div>
                         </div>
                     </div>
