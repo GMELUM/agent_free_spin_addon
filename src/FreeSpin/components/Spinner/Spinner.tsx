@@ -5,17 +5,20 @@ import style from "./Spinner.module.css";
 import AspectRation from "../AspectRation/AspectRation";
 import Slot, { Symbols } from "./Slot";
 import Button from "../Button/Button";
+import CoinsBurstEffect from "../CoinsBurstEffect/CoinsBurstEffect";
 
 interface SpinnerProps extends HTMLAttributes<HTMLDivElement> {
     symbols: Symbols;
     combination: [string, string, string];
-    prize?: string
+    prize?: string;
+    onExecute: () => void;
 }
 
 const Spinner: FC<SpinnerProps> = ({
     symbols,
     combination,
     prize,
+    onExecute,
     ...prevProps
 }) => {
     const [canStopArray, setCanStopArray] = useState<boolean[]>([false, false, false]);
@@ -41,6 +44,7 @@ const Spinner: FC<SpinnerProps> = ({
         }
 
         if (finishedSlots.length === 3) {
+            onExecute && onExecute();
             setTimeout(() => {
                 setCanStopArray([false, false, false]);
                 setFinishedSlots([]);

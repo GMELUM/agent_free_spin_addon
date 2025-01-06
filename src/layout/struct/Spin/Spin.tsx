@@ -27,34 +27,34 @@ const symbols: Symbols = [
     key: "bag_ton",
     element: <img src="bag_ton.png" alt="bag_ton" />
   },
-  // {
-  //   key: "bag_ap",
-  //   element: <img src="bag_ap.png" alt="bag_ap" />
-  // },
-  // {
-  //   key: "box_not",
-  //   element: <img src="box_not.png" alt="box_not" />
-  // },
-  // {
-  //   key: "box_ton",
-  //   element: <img src="box_ton.png" alt="box_ton" />
-  // },
-  // {
-  //   key: "box_ap",
-  //   element: <img src="box_ap.png" alt="box_ap" />
-  // },
-  // {
-  //   key: "jeckpot",
-  //   element: <img src="jeckpot.png" alt="jeckpot" />
-  // },
-  // {
-  //   key: "wild",
-  //   element: <img src="wild.png" alt="wild" />
-  // },
-  // {
-  //   key: "free_spin",
-  //   element: <img src="free_spin.png" alt="free_spin" />
-  // },
+  {
+    key: "bag_ap",
+    element: <img src="bag_ap.png" alt="bag_ap" />
+  },
+  {
+    key: "box_not",
+    element: <img src="box_not.png" alt="box_not" />
+  },
+  {
+    key: "box_ton",
+    element: <img src="box_ton.png" alt="box_ton" />
+  },
+  {
+    key: "box_ap",
+    element: <img src="box_ap.png" alt="box_ap" />
+  },
+  {
+    key: "jeckpot",
+    element: <img src="jeckpot.png" alt="jeckpot" />
+  },
+  {
+    key: "wild",
+    element: <img src="wild.png" alt="wild" />
+  },
+  {
+    key: "free_spin",
+    element: <img src="free_spin.png" alt="free_spin" />
+  },
 ]
 
 interface Spin extends HTMLAttributes<HTMLDivElement> {
@@ -65,16 +65,16 @@ const Spin: FC<Spin> = ({ nav }) => {
 
   const activePanel = useRouter("panel");
 
-  const [value, setValue] = useState<[string, string, string]>(["currant", "blackberry", "apple"]);
+  const [value, setValue] = useState<[string, string, string]>(["empty", "empty", "empty"]);
+  const [count, setCount] = useState(0)
 
   const handlerSpin = () => {
     const keys = symbols.map((symbol) => symbol.key);
     const shuffled = keys.sort(() => Math.random() - 0.5);
     console.log(shuffled.slice(0, 3))
     setValue(shuffled.slice(0, 3) as [string, string, string]);
+    setCount(0);
   }
-
-  console.log(value)
 
   return (
     <View nav={nav} activePanel={activePanel}>
@@ -87,13 +87,16 @@ const Spin: FC<Spin> = ({ nav }) => {
 
           symbols={symbols}
           combination={value}
-          prize={"-"}
+          prize={count > 0 ? `${count} AP` : "-"}
 
           onShop={() => { console.log("open shop panel") }}
           onSpin={handlerSpin}
 
+          onExecute={() => {
+            setCount(Math.floor(Math.random() * 1e5));
+          }}
+
         />
-        {/* <FreeSpinShop /> */}
       </Panel>
     </View>
   );

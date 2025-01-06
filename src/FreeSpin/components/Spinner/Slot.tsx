@@ -22,25 +22,30 @@ const Slot: React.FC<SlotProps> = ({
     onChange,
     canStop = true,
 }) => {
-
-    const initialIndex = useMemo(() => {
-        const index = symbols.findIndex((symbol) => symbol.key === change);
-        return index !== -1 ? index : 0;
-    }, [symbols, change]);
+    const shuffleArray = (array: Symbols) => {
+        const result = [...array];
+        for (let i = result.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [result[i], result[j]] = [result[j], result[i]];
+        }
+        return result;
+    };
 
     const [state, setState] = useState({
         hash: 0,
         index: 0,
-        position: symbols.map((_, i) => (i + initialIndex) % symbols.length),
+        position: symbols.map((_, i) => i),
         active: false,
         end: false,
         changedKey: null as string | null,
+        symbols: shuffleArray(symbols), // Добавлено перемешивание
     });
 
     useEffect(() => {
         const interval = setInterval(() => {
             setState((prevState) => {
-                if (!state.active) return prevState;
+                if (!prevState.active) return prevState;
+                if (change === "empty") return prevState;
 
                 const lastElement = prevState.position.pop();
                 if (lastElement !== undefined) {
@@ -50,21 +55,20 @@ const Slot: React.FC<SlotProps> = ({
                 const currentItem = prevState.position[3];
                 const nextIndex = prevState.index++;
 
-                if (symbols[currentItem].key == change && canStop) {
+                if (prevState.symbols[currentItem].key === change && canStop) {
                     return {
                         ...prevState,
                         index: nextIndex,
                         active: false,
-                        changedKey: symbols[currentItem].key,
+                        changedKey: prevState.symbols[currentItem].key,
                     };
                 }
 
                 return {
                     ...prevState,
                     index: prevState.index++,
-                    end: false
+                    end: false,
                 };
-
             });
         }, 69);
 
@@ -79,7 +83,11 @@ const Slot: React.FC<SlotProps> = ({
     }, [state.changedKey]);
 
     useEffect(() => {
-        setState((prevState) => ({ ...prevState, active: true, changedKey: null }));
+        setState((prevState) => ({
+            ...prevState,
+            active: change !== "empty",
+            changedKey: null,
+        }));
     }, [change, hash]);
 
     const createPosition = (cellIndex: number): CSSProperties => [
@@ -110,7 +118,7 @@ const Slot: React.FC<SlotProps> = ({
 
     const renderedItems = useMemo(
         () =>
-            symbols.map((symbol, idx) => (
+            state.symbols.map((symbol, idx) => (
                 <div
                     key={symbol.key}
                     className={styles.Slot_position}
@@ -119,7 +127,7 @@ const Slot: React.FC<SlotProps> = ({
                     {symbol.element}
                 </div>
             )),
-        [state.index, symbols]
+        [state.index, state.symbols]
     );
 
     return (
