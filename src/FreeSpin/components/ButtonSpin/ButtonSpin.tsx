@@ -54,6 +54,9 @@ const ButtonSpin: FC<ButtonSpin> = ({
       <span className={style.ButtonSpin__footer}>
         <ButtonSpinFooter />
       </span>
+      <span className={style.ButtonSpin__light}>
+        <ButtonSpinLite />
+      </span>
     </div>
   );
 };
