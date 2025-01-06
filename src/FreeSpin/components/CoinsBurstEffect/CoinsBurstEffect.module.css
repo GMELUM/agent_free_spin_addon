@@ -1,10 +1,22 @@
 .CoinsBurstEffect {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 9999999;
+    display       : block;
+    position      : absolute;
+    top           : 0;
+    right         : 0;
+    bottom        : 0;
+    left          : 0;
+    z-index       : 9999999;
     pointer-events: none;
+    opacity       : 0;
+    animation     : _AnimationBoom 0.2s ease-in forwards;
+}
+
+@keyframes _AnimationBoom {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
