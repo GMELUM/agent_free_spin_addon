@@ -82,6 +82,28 @@ const Spin: FC<Spin> = ({ nav }) => {
   return (
     <View nav={nav} activePanel={activePanel}>
       <Panel nav={"default"} safeTop={false} safeBottom={false} fixed>
+        {/* <FreeSpinShop
+          onPay={(price) => console.log("onPay, price:", price)}
+          prices={[
+            {
+              spins: 100,
+              price: 150,
+            },
+            {
+              spins: 500,
+              price: 300,
+              active: true,
+            },
+            {
+              spins: 1000,
+              price: 600,
+            },
+            {
+              spins: 10000,
+              price: 5000,
+            },
+          ]}
+        /> */}
         <FreeSpin
           ap={112000}
           // not={0}
@@ -90,6 +112,16 @@ const Spin: FC<Spin> = ({ nav }) => {
           symbols={symbols}
           combination={value}
           prize={count > 0 ? `${count} AP` : "-"}
+          onRate={(rate) => {
+            const rates = ["SPIN x1", "SPIN x5", "SPIN x10", "SPIN x1000"];
+            const index = rates.indexOf(rate);
+
+            if (index === -1 || index === rates.length - 1) {
+              return rates[0];
+            }
+
+            return rates[index + 1];
+          }}
           onShop={() => {
             console.log("open shop panel");
           }}

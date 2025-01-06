@@ -3,6 +3,7 @@ import { FC, HTMLAttributes } from "react";
 import ButtonGroup from "../ButtonGroup/ButtonGroup";
 import Button from "../Button/Button";
 import { IconStar } from "FreeSpinShop/source";
+import formatNumberWithCommas from "FreeSpin/utils/formatNumberWithCommas";
 
 interface Description extends HTMLAttributes<HTMLDivElement> {
   opacity?: number;
@@ -31,9 +32,11 @@ const List: FC<List> = ({ onPay, prices }) => {
           <Button
             onClick={() => onPay(item.spins)}
             appearance={item.active ? "gold" : "secondary"}
-            description={<Description children={item.spins} />}
+            description={
+              <Description children={formatNumberWithCommas(item.spins)} />
+            }
           >
-            {item.spins} spins
+            {formatNumberWithCommas(item.spins)} spins
           </Button>
         </ButtonGroup.Container>
       ))}

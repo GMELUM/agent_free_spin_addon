@@ -3,38 +3,16 @@ import { Header, List } from "./components";
 
 import "./index.css";
 
-interface FreeSpinShop extends HTMLAttributes<HTMLDivElement> {}
+interface FreeSpinShop extends HTMLAttributes<HTMLDivElement> {
+  onPay: (count: number) => void;
+  prices: { spins: number; price: number; active?: boolean }[];
+}
 
-const FreeSpinShop: FC<FreeSpinShop> = ({}) => {
-  const handlerPay = (count: number) => {
-    console.log({ count });
-  };
-
+const FreeSpinShop: FC<FreeSpinShop> = ({ onPay, prices }) => {
   return (
     <>
       <Header />
-      <List
-        onPay={handlerPay}
-        prices={[
-          {
-            spins: 100,
-            price: 150,
-          },
-          {
-            spins: 500,
-            price: 300,
-            active: true,
-          },
-          {
-            spins: 1000,
-            price: 600,
-          },
-          {
-            spins: 10000,
-            price: 5000,
-          },
-        ]}
-      />
+      <List onPay={onPay} prices={prices} />
     </>
   );
 };
