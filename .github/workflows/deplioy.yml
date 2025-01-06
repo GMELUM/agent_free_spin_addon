@@ -37,23 +37,23 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16' # Use the version of Node.js your project requires
-          cache: 'npm'
+          node-version: '20' # Use the version of Node.js your project requires
+          cache: 'yarn'
 
       # Install dependencies
       - name: Install Dependencies
-        run: npm install
+        run: yarn
 
       # Build the React app
       - name: Build React App
-        run: npm run build
+        run: yarn build
 
       # Upload build artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload the build directory instead of the entire repository
-          path: './build'
+          path: './dist'
 
       # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
