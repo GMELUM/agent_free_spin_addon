@@ -1,10 +1,4 @@
-import {
-  FC,
-  HTMLAttributes,
-  useEffect,
-  useMemo,
-  useRef
-} from "react";
+import { FC, HTMLAttributes, useEffect, useMemo, useRef } from "react";
 import { Spinner, Balances, Spins, ButtonSpin } from "./components";
 import { Symbols } from "./components/Spinner/Slot";
 
@@ -64,8 +58,8 @@ const FreeSpin: FC<FreeSpin> = ({
   const handlerRoll = () => {
     if (!active.current) return;
     if (block.current) return;
-    onSpin && onSpin();
     block.current = true;
+    onSpin && onSpin();
   };
 
   useEffect(() => {
@@ -103,7 +97,7 @@ const FreeSpin: FC<FreeSpin> = ({
           onExecute();
 
           block.current = false;
-          setTimeout(handlerRoll, 1400); //Задержка перед следующей прокруткой
+          window.setTimeout(handlerRoll, 1400); //Задержка перед следующей прокруткой
         }}
       />
 
