@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no, viewport-fit=cover, minimum-scale=1, maximum-scale=1"
-		/>
-		<script type="module" src="/src/index.tsx"></script>
-	</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no, viewport-fit=cover, minimum-scale=1, maximum-scale=1"
+    />
+    <script type="module" src="/src/index.tsx"></script>
+  </head>
 
-	<body>
-		<app></app>
-	</body>
+  <body>
+    <app></app>
+  </body>
+
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script>
+    window.Telegram.WebApp.requestFullscreen();
+  </script>
 </html>

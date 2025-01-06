@@ -17,6 +17,11 @@
   dependencies:
     "@svgr/core" "^6.5.1"
 
+"@apiteam/twa-bridge@^8.0.2-beta":
+  version "8.0.2-beta"
+  resolved "https://registry.yarnpkg.com/@apiteam/twa-bridge/-/twa-bridge-8.0.2-beta.tgz#ed4c8b9b3aef72f1ff2902cdc0c60345235e7278"
+  integrity sha512-mFdm9g1uttYSYXX2aoo58/8q9re1zljH6uRLju52jick9BUb92PfpGhzx3tvgrmTub32xtG86MJlzxv1UxsMWQ==
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.25.9", "@babel/code-frame@^7.26.0", "@babel/code-frame@^7.26.2":
   version "7.26.2"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.26.2.tgz#4b5fab97d33338eff916235055f0ebc21e573a85"

@@ -7,6 +7,7 @@
     "deploy": "git subtree push --prefix builds https://github.com/elum-static/new_year gh-pages"
   },
   "dependencies": {
+    "@apiteam/twa-bridge": "^8.0.2-beta",
     "@vkontakte/vk-bridge": "^2.15.3",
     "elum-router": "0.0.17",
     "elum-state": "0.7.5",
