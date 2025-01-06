@@ -1,5 +1,5 @@
 import React, { CSSProperties, ReactElement, useEffect, useMemo, useState } from "react";
-import styles from "./slot.module.css";
+import styles from "./Slot.module.css";
 import { classes } from "../../utils";
 
 export type Symbols = Array<{

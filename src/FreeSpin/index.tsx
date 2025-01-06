@@ -3,8 +3,7 @@ import {
   HTMLAttributes,
   useEffect,
   useMemo,
-  useRef,
-  useState,
+  useRef
 } from "react";
 import { Spinner, Balances, Spins, ButtonSpin } from "./components";
 import { Symbols } from "./components/Spinner/Slot";
