@@ -17,6 +17,8 @@ interface ButtonSpin extends HTMLAttributes<HTMLDivElement> {
   onStatus?: (status: boolean) => void;
 }
 
+const isTouchSupport = window && "ontouchstart" in window;
+
 const ButtonSpin: FC<ButtonSpin> = ({
   onStatus,
   className,
@@ -27,7 +29,7 @@ const ButtonSpin: FC<ButtonSpin> = ({
   const time = useRef(new Date());
 
   const onStart = () => {
-    time.current = new Date(Date.now() + 3_000);
+    time.current = new Date(Date.now() + 2_000);
     setActive(true);
     onStatus?.(true);
   };
@@ -37,16 +39,23 @@ const ButtonSpin: FC<ButtonSpin> = ({
     onStatus?.(false);
   };
 
+  const mouseEvent = {
+    onMouseDown: onStart,
+    onMouseUp: onEnd,
+  };
+
+  const touchEvent = {
+    onTouchStart: onStart,
+    onTouchEnd: onEnd,
+  };
+
   return (
     <div
       {...prevProps}
       className={classes(style.ButtonSpin, {
         [style[`ButtonSpin--active`]]: active,
       })}
-      onTouchStart={onStart}
-      onTouchEnd={onEnd}
-      onMouseUp={onEnd}
-      onMouseDown={onStart}
+      {...(isTouchSupport ? touchEvent : mouseEvent)}
     >
       <span className={style.ButtonSpin__header}>
         <ButtonSpinHeader />
