@@ -1,4 +1,4 @@
-import { FC, HTMLAttributes, memo, useEffect, useState } from "react";
+import { FC, HTMLAttributes, memo, useEffect, useRef, useState } from "react";
 import { classes } from "utils";
 
 import style from "./ButtonSpin.module.css";
@@ -24,12 +24,15 @@ const ButtonSpin: FC<ButtonSpin> = ({
   ...prevProps
 }) => {
   const [active, setActive] = useState(false);
+  const time = useRef(new Date());
 
   const onStart = () => {
+    time.current = new Date(Date.now() + 3_000);
     setActive(true);
     onStatus?.(true);
   };
   const onEnd = () => {
+    if (time.current.getTime() <= Date.now()) return;
     setActive(false);
     onStatus?.(false);
   };
