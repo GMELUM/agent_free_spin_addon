@@ -5,7 +5,12 @@ interface ShowProps {
     children: ReactNode;
 }
 
-const Show = forwardRef((props: ShowProps, ref) => {
+type OutRef = {
+    show: () => void;
+    hidden: () => void;
+}
+
+const Show = forwardRef<OutRef, ShowProps>((props: ShowProps, ref) => {
     const [shouldRender, setShouldRender] = useState(false);
 
     // Функция для отрисовки контента и перерисовки
