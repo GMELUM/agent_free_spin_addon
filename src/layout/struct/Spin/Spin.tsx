@@ -1,4 +1,4 @@
-import { FC, HTMLAttributes, useEffect, useState } from "react";
+import { FC, HTMLAttributes, useState } from "react";
 import { useRouter } from "elum-router/react";
 
 import { Panel, View } from "components";

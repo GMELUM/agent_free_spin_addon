@@ -7,7 +7,7 @@ import {
   ButtonSpinHeader,
   ButtonSpinLite,
   ButtonSpinMain,
-} from "FreeSpin/source";
+} from "../../source";
 
 interface ButtonSpin extends HTMLAttributes<HTMLDivElement> {
   /**

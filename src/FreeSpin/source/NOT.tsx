@@ -1,6 +1,6 @@
-import { HTMLAttributes } from "react";
+import { SVGAttributes } from "react";
 
-export default (props: HTMLAttributes<SVGElement>) => (
+export default (props: SVGAttributes<SVGElement>) => (
   <svg
     width="31"
     height="30"

@@ -18,7 +18,7 @@ const Spins: FC<Spins> = ({ count = 0, onClick, ...prevProps }) => (
       <span className={style["Spins__before--secondary"]}>You have&nbsp;</span>
       <span className={style["Spins__before--accent"]}>{count} spins</span>
       <span className={style["Spins__before_icon"]}>
-        <IconSpin width={20} height={20} />
+        <IconSpin />
       </span>
     </span>
     <span className={style.Spins__after}>
