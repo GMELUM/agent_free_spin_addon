@@ -15,6 +15,8 @@ interface FreeSpin extends HTMLAttributes<HTMLDivElement> {
   combination: [string, string, string];
   prize?: string;
 
+  count: number;
+
   onSpin: () => void;
   onShop: () => void;
   onExecute: () => void;
@@ -28,6 +30,7 @@ const FreeSpin: FC<FreeSpin> = ({
   symbols,
   combination,
   prize,
+  count,
   onSpin,
   onShop,
   onExecute,
@@ -92,7 +95,6 @@ const FreeSpin: FC<FreeSpin> = ({
         prize={prize}
         onRate={onRate}
         onExecute={() => {
-          console.log("success");
           handlerShow();
           onExecute();
 
@@ -101,7 +103,7 @@ const FreeSpin: FC<FreeSpin> = ({
         }}
       />
 
-      <Spins count={15} onClick={() => onShop && onShop()} />
+      <Spins count={count} onClick={() => onShop && onShop()} />
       <ButtonSpin
         onStatus={(status) => {
           active.current = status;

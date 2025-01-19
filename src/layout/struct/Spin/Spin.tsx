@@ -109,6 +109,8 @@ const Spin: FC<Spin> = ({ nav }) => {
           // not={0}
           // ton={0}
 
+          count={100}
+
           symbols={symbols}
           combination={value}
           prize={count > 0 ? `${count} AP` : "-"}
