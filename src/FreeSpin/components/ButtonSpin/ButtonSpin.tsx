@@ -1,5 +1,5 @@
-import { FC, HTMLAttributes, memo, useEffect, useRef, useState } from "react";
-import { classes } from "utils";
+import { FC, HTMLAttributes, memo, useRef, useState } from "react";
+import { classes } from "../../utils";
 
 import style from "./ButtonSpin.module.css";
 import {

@@ -1,7 +1,7 @@
 import { FC, HTMLAttributes, ReactNode } from "react";
 
 import style from "./Plug.module.css";
-import { classes } from "utils";
+import { classes } from "../../utils";
 
 interface IPlug extends HTMLAttributes<HTMLDivElement> {
   icon?: ReactNode;

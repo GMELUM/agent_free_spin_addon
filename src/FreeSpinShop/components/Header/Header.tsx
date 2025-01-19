@@ -1,7 +1,7 @@
 import { FC, HTMLAttributes } from "react";
 import Plug from "../Plug/Plug";
 
-import { IconSpin } from "FreeSpin/source";
+import { IconSpin } from "../../source";
 
 interface Header extends HTMLAttributes<HTMLDivElement> {}
 

@@ -2,8 +2,8 @@ import { FC, HTMLAttributes } from "react";
 
 import ButtonGroup from "../ButtonGroup/ButtonGroup";
 import Button from "../Button/Button";
-import { IconStar } from "FreeSpinShop/source";
-import formatNumberWithCommas from "FreeSpin/utils/formatNumberWithCommas";
+import { IconStar } from "../../source";
+import formatNumberWithCommas from "../../utils/formatNumberWithCommas";
 
 interface Description extends HTMLAttributes<HTMLDivElement> {
   opacity?: number;

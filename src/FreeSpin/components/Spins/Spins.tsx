@@ -1,6 +1,6 @@
 import { FC, HTMLAttributes, memo } from "react";
 
-import { IconSpin } from "FreeSpin/source";
+import { IconSpin } from "../../source";
 import Button from "../Button/Button";
 
 import style from "./Spins.module.css";

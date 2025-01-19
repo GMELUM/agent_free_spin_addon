@@ -1,5 +1,5 @@
 import { FC, HTMLAttributes, memo } from "react";
-import { classes } from "utils";
+import { classes } from "../../utils";
 
 import style from "./Button.module.css";
 

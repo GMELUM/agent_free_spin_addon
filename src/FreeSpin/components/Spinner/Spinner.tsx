@@ -1,11 +1,10 @@
 import { FC, HTMLAttributes, memo, useEffect, useState } from "react";
-import { classes } from "utils";
+import { classes } from "../../utils";
 
 import style from "./Spinner.module.css";
 import AspectRation from "../AspectRation/AspectRation";
 import Slot, { Symbols } from "./Slot";
 import Button from "../Button/Button";
-import CoinsBurstEffect from "../CoinsBurstEffect/CoinsBurstEffect";
 
 interface SpinnerProps extends HTMLAttributes<HTMLDivElement> {
   symbols: Symbols;

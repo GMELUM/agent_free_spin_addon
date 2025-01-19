@@ -2,9 +2,9 @@ import { FC, HTMLAttributes, memo } from "react";
 
 import ButtonGroup from "../ButtonGroup/ButtonGroup";
 import Button from "../Button/Button";
-import { IconAgent, IconNOT, IconTON } from "FreeSpin/source";
-import formatCrypto from "FreeSpin/utils/formatCrypto";
-import formatNumberWithCommas from "FreeSpin/utils/formatNumberWithCommas";
+import { IconAgent, IconNOT, IconTON } from "../../source";
+import formatCrypto from "../../utils/formatCrypto";
+import formatNumberWithCommas from "../../utils/formatNumberWithCommas";
 
 interface Balances extends HTMLAttributes<HTMLDivElement> {
   ap?: number | false;
@@ -12,11 +12,11 @@ interface Balances extends HTMLAttributes<HTMLDivElement> {
   not?: number | false;
 }
 
-const Balances: FC<Balances> = ({ 
-  ap = false, 
-  ton = false, 
-  not = false, 
-  ...prevProps 
+const Balances: FC<Balances> = ({
+  ap = false,
+  ton = false,
+  not = false,
+  ...prevProps
 }) => (
   <ButtonGroup {...prevProps}>
     {ap !== false && (
