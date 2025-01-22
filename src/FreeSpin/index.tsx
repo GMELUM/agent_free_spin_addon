@@ -20,7 +20,8 @@ interface FreeSpin extends HTMLAttributes<HTMLDivElement> {
   onSpin: () => void;
   onShop: () => void;
   onExecute: () => void;
-  onRate: (rate: string) => string;
+  rate: React.ReactNode;
+  onRate: () => void;
 }
 
 const FreeSpin: FC<FreeSpin> = ({
@@ -31,6 +32,7 @@ const FreeSpin: FC<FreeSpin> = ({
   combination,
   prize,
   count,
+  rate,
   onSpin,
   onShop,
   onExecute,
@@ -93,6 +95,7 @@ const FreeSpin: FC<FreeSpin> = ({
         symbols={symbols}
         combination={combination}
         prize={prize}
+        rate={rate}
         onRate={onRate}
         onExecute={() => {
           handlerShow();

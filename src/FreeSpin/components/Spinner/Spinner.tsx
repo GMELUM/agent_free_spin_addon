@@ -11,7 +11,8 @@ interface SpinnerProps extends HTMLAttributes<HTMLDivElement> {
   combination: [string, string, string];
   prize?: string;
   onExecute: () => void;
-  onRate: (rate: string) => string;
+  onRate: () => void;
+  rate: React.ReactNode;
 }
 
 const Spinner: FC<SpinnerProps> = ({
@@ -20,9 +21,9 @@ const Spinner: FC<SpinnerProps> = ({
   prize,
   onExecute,
   onRate,
+  rate,
   ...prevProps
 }) => {
-  const [rate, setRate] = useState(onRate(""));
   const [canStopArray, setCanStopArray] = useState<boolean[]>([
     false,
     false,
@@ -95,13 +96,7 @@ const Spinner: FC<SpinnerProps> = ({
 
             <div className={style.Spinner_rate}>
               <div className={style.Spinner_rate_outer}>
-                <Button
-                  onClick={() => {
-                    setRate((rate) => onRate(rate));
-                  }}
-                  stretched
-                  textSize={"medium"}
-                >
+                <Button onClick={onRate} stretched textSize={"medium"}>
                   {rate}
                 </Button>
                 {/* <div className={style.Spinner_rate_inner}>SPIN X1000</div> */}

@@ -110,20 +110,11 @@ const Spin: FC<Spin> = ({ nav }) => {
           // ton={0}
 
           count={100}
-
           symbols={symbols}
           combination={value}
           prize={count > 0 ? `${count} AP` : "-"}
-          onRate={(rate) => {
-            const rates = ["SPIN x1", "SPIN x5", "SPIN x10", "SPIN x1000"];
-            const index = rates.indexOf(rate);
-
-            if (index === -1 || index === rates.length - 1) {
-              return rates[0];
-            }
-
-            return rates[index + 1];
-          }}
+          rate={"SPIN x1"}
+          onRate={() => console.log("click")}
           onShop={() => {
             console.log("open shop panel");
           }}
