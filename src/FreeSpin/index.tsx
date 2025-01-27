@@ -44,8 +44,8 @@ const FreeSpin: FC<FreeSpin> = ({
   const block = useRef(false);
 
   const balance = useMemo(
-    () => <Balances ap={ap} not={not} ton={ton} jackpot={jackpot} />,
-    [ap, not, ton, jackpot],
+    () => <Balances ap={ap} not={not} ton={ton} />,
+    [ap, not, ton],
   );
 
   const showRef = useRef<any>(null);
@@ -108,7 +108,11 @@ const FreeSpin: FC<FreeSpin> = ({
         }}
       />
 
-      <Spins count={count} onClick={() => onShop && onShop()} />
+      <Spins
+        count={count}
+        onClick={() => onShop && onShop()}
+        jackpot={jackpot}
+      />
       <ButtonSpin
         onStatus={(status) => {
           active.current = status;

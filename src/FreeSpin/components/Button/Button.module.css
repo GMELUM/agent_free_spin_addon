@@ -6,9 +6,11 @@
   font-weight    : 600;
   overflow       : hidden;
 
-  cursor: pointer;
-
   border-radius: 18px;
+}
+
+.Button__pointer {
+  cursor: pointer;
 }
 
 .Button__in {

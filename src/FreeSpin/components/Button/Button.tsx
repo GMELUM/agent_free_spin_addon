@@ -38,6 +38,8 @@ const Button: FC<Button> = ({
 
       [style[`Button__appearance--secondary`]]: appearance === "secondary",
       [style["Button__appearance--white"]]: appearance === "white",
+
+      [style["Button__pointer"]]: !!prevProps.onClick,
     })}
   >
     {before && <span className={style.Button__before}>{before}</span>}
