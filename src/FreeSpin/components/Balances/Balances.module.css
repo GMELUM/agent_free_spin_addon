@@ -1,1 +1,12 @@
-.Balances {}
+.Balances__jackpot {
+  font-weight     : 600;
+  min-height      : 30px;
+  background      : url(public/bg_jackpot.png);
+  background-color: rgba(34, 32, 34, 0.75);
+}
+
+.Balances__jackpot_text {
+  background-image: linear-gradient(to right, #bb6c41, #c08521);
+  color           : transparent;
+  background-clip : text;
+}

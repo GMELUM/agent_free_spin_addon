@@ -106,6 +106,7 @@ const Spin: FC<Spin> = ({ nav }) => {
         /> */}
         <FreeSpin
           ap={112000}
+          jackpot={10000000}
           // not={0}
           // ton={0}
 

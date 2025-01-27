@@ -1,3 +1,5 @@
+import style from "./Balances.module.css";
+
 import { FC, HTMLAttributes, memo } from "react";
 
 import ButtonGroup from "../ButtonGroup/ButtonGroup";
@@ -10,15 +12,32 @@ interface Balances extends HTMLAttributes<HTMLDivElement> {
   ap?: number | false;
   ton?: number | false;
   not?: number | false;
+  jackpot?: number | false;
 }
 
 const Balances: FC<Balances> = ({
   ap = false,
   ton = false,
   not = false,
+  jackpot = false,
   ...prevProps
 }) => (
   <ButtonGroup {...prevProps}>
+    {jackpot !== false && (
+      <ButtonGroup.Container>
+        <Button
+          stretched
+          textSize={"large"}
+          className={style.Balances__jackpot}
+        >
+          JACKPOT{" "}
+          <span className={style.Balances__jackpot_text}>
+            {formatNumberWithCommas(jackpot)}
+          </span>{" "}
+          AP
+        </Button>
+      </ButtonGroup.Container>
+    )}
     {ap !== false && (
       <ButtonGroup.Container>
         <Button

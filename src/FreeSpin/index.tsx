@@ -10,6 +10,7 @@ interface FreeSpin extends HTMLAttributes<HTMLDivElement> {
   ap?: number;
   not?: number;
   ton?: number;
+  jackpot?: number;
 
   symbols: Symbols;
   combination: [string, string, string];
@@ -28,6 +29,7 @@ const FreeSpin: FC<FreeSpin> = ({
   ap,
   not,
   ton,
+  jackpot,
   symbols,
   combination,
   prize,
@@ -42,8 +44,8 @@ const FreeSpin: FC<FreeSpin> = ({
   const block = useRef(false);
 
   const balance = useMemo(
-    () => <Balances ap={ap} not={not} ton={ton} />,
-    [ap, not, ton],
+    () => <Balances ap={ap} not={not} ton={ton} jackpot={jackpot} />,
+    [ap, not, ton, jackpot],
   );
 
   const showRef = useRef<any>(null);
